@@ -1,0 +1,13 @@
+{
+    "status_name1": "지금",
+    "status_name2": "어때",
+    "status_desc": "리미널의 상태를 알려줄게요!",
+    "status_emb_title": [
+        "✨ 리미널 여기 있어요!",
+        "💨 리미널이 열심히 답장하고 있어요!"
+    ],
+    "status_emb_lat_title": "🕑 지연 시간",
+    "status_emb_lat": "리미널이 현재 **{latency}ms**의 지연 시간으로 답장하고 있어요!",
+    "status_emb_mem_title": "🍕 메모리 사용량",
+    "status_emb_mem": "리미널이 현재 **{memory:.2f}MB**의 서버 메모리를 먹고 있어요!"
+}

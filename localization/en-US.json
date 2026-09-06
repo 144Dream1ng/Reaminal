@@ -1,0 +1,13 @@
+{
+    "status_name1": "your",
+    "status_name2": "status",
+    "status_desc": "Reaminal will tell you its current status!",
+    "status_emb_title": [
+        "✨ Reaminal is here!",
+        "💨 Reaminal is responding hardly!"
+    ],
+    "status_emb_lat_title": "🕑 Latency",
+    "status_emb_lat": "Reaminal is responding with a latency of **{latency}ms**!",
+    "status_emb_mem_title": "🍕 Memory Usage",
+    "status_emb_mem": "Reaminal is currently using **{memory:.2f}MB** of server memory!"
+}

@@ -1,0 +1,6 @@
+settings:
+  debug: true
+
+server:
+  ip: 192.168.219.122
+  user: user

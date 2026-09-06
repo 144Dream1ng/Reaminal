@@ -1,1 +1,5 @@
 nextcord
+rich
+psutil
+python-dotenv
+pyyaml
