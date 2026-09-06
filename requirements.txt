@@ -3,3 +3,5 @@ rich
 psutil
 python-dotenv
 pyyaml
+pillow
+aiohttp

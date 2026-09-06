@@ -9,5 +9,11 @@
     "status_emb_lat_title": "🕑 지연 시간",
     "status_emb_lat": "리미널이 현재 **{latency}ms**의 지연 시간으로 답장하고 있어요!",
     "status_emb_mem_title": "🍕 메모리 사용량",
-    "status_emb_mem": "리미널이 현재 **{memory:.2f}MB**의 서버 메모리를 먹고 있어요!"
+    "status_emb_mem": "리미널이 현재 **{memory:.2f}MB**의 서버 메모리를 먹고 있어요!",
+
+    "large_name": "이모지 확대",
+    "large_no_emoji": "이모지가 포함된 메시지를 제공해주세요.",
+    "large_multiple_emojis": "하나의 이모지만 포함된 메시지를 제공해주세요.",
+    "large_only_emoji": "이모지만 포함된 메시지를 제공해주세요.",
+    "large_failed": "이모지를 확대하는 데 실패했습니다."
 }

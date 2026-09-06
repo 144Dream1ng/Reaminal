@@ -1,5 +1,5 @@
 settings:
-  debug: true
+  debug: false
 
 server:
   ip: 192.168.219.122
