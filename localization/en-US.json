@@ -9,5 +9,11 @@
     "status_emb_lat_title": "🕑 Latency",
     "status_emb_lat": "Reaminal is responding with a latency of **{latency}ms**!",
     "status_emb_mem_title": "🍕 Memory Usage",
-    "status_emb_mem": "Reaminal is currently using **{memory:.2f}MB** of server memory!"
+    "status_emb_mem": "Reaminal is currently using **{memory:.2f}MB** of server memory!",
+
+    "large_name": "Emoji Enlarger",
+    "large_no_emoji": "Please provide a message that contains an emoji.",
+    "large_multiple_emojis": "Please provide a message that contains only one emoji.",
+    "large_only_emoji": "Please provide a message that contains only an emoji.",
+    "large_failed": "Failed to enlarge the emoji."
 }
