@@ -2,8 +2,8 @@
 import nextcord
 import os
 import psutil
+from utils import *
 from nextcord.ext import commands
-from utils.localizer import get, gwl
 
 
 class StatusCog(commands.Cog):
