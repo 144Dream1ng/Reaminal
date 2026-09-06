@@ -16,10 +16,21 @@ class LargeCog(commands.Cog):
             r"<(?P<animated>a?):(?P<name>\w+):(?P<id>\d+)>"
         )
         self.UPSCALE_SIZE = 512
+        self.RESAMPLE_METHOD = Image.Resampling.BICUBIC
     
     @nextcord.message_command(
         name=localizer.default("large_name"),
         name_localizations=localizer.all("large_name"),
+        integration_types=[
+            nextcord.IntegrationType.guild_install,
+            nextcord.IntegrationType.user_install,
+        ],
+        contexts=[
+            nextcord.InteractionContextType.guild,
+            nextcord.InteractionContextType.bot_dm,
+            nextcord.InteractionContextType.private_channel,
+        ],
+        force_global=True,
     )
     async def large(
             self,
@@ -93,7 +104,7 @@ class LargeCog(commands.Cog):
         
         image = image.resize(
             (self.UPSCALE_SIZE, self.UPSCALE_SIZE),
-            Image.Resampling.NEAREST
+            self.RESAMPLE_METHOD
         )
         
         buffer = io.BytesIO()
@@ -111,7 +122,7 @@ class LargeCog(commands.Cog):
         for frame in ImageSequence.Iterator(source):
             new_frame = frame.convert("RGBA").resize(
                 (self.UPSCALE_SIZE, self.UPSCALE_SIZE),
-                Image.Resampling.NEAREST
+                self.RESAMPLE_METHOD
             )
             frames.append(new_frame)
             durations.append(frame.info.get("duration", 80))
