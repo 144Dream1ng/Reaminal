@@ -23,6 +23,16 @@ class StatusCog(commands.Cog):
     @nextcord.slash_command(
         name=localizer.default("status_name1"),
         name_localizations=localizer.all("status_name1"),
+        integration_types=[
+            nextcord.IntegrationType.guild_install,
+            nextcord.IntegrationType.user_install,
+        ],
+        contexts=[
+            nextcord.InteractionContextType.guild,
+            nextcord.InteractionContextType.bot_dm,
+            nextcord.InteractionContextType.private_channel,
+        ],
+        force_global=True,
     )
     async def status_first(self, interaction: nextcord.Interaction): pass
     
