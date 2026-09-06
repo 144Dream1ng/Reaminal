@@ -15,5 +15,7 @@
     "large_no_emoji": "Please provide a message that contains an emoji.",
     "large_multiple_emojis": "Please provide a message that contains only one emoji.",
     "large_only_emoji": "Please provide a message that contains only an emoji.",
-    "large_failed": "Failed to enlarge the emoji."
+    "large_failed": "Failed to enlarge the emoji.",
+    "large_delete_not_authorized": "You are not authorized to delete this message.",
+    "large_old_message": "This command cannot be used on messages older than 5 minutes."
 }

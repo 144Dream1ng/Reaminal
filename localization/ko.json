@@ -15,5 +15,7 @@
     "large_no_emoji": "이모지가 포함된 메시지를 제공해주세요.",
     "large_multiple_emojis": "하나의 이모지만 포함된 메시지를 제공해주세요.",
     "large_only_emoji": "이모지만 포함된 메시지를 제공해주세요.",
-    "large_failed": "이모지를 확대하는 데 실패했습니다."
+    "large_failed": "이모지를 확대하는 데 실패했습니다.",
+    "large_delete_not_authorized": "이 메시지를 삭제할 권한이 없습니다.",
+    "large_old_message": "5분이 지난 메시지에는 사용할 수 없습니다."
 }
