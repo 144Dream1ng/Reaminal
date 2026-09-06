@@ -1,33 +1,58 @@
-# utils/localizer.py
 import json
 import random
 from pathlib import Path
 
 
 class Localizer:
-    def __init__(self, directory: str = "./localization"):
-        self.directory = Path(directory)
-        self.data = {}
-        
-        self.load_all()
+    DEFAULT_LOCALE = "en-US"
     
-    def load_all(self):
+    def __init__(self, directory: str | Path | None = None):
+        if directory is None:
+            directory = Path(__file__).resolve().parent.parent / "localization"
+        
+        self.directory = Path(directory)
+        self.data: dict[str, dict[str, str | list[str]]] = {}
+        
+        self.reload()
+    
+    def reload(self) -> None:
+        self.data.clear()
+        
         for file in self.directory.glob("*.json"):
-            with open(file, 'r', encoding='utf-8') as f:
+            with file.open("r", encoding="utf-8") as f:
                 self.data[file.stem] = json.load(f)
     
-    def get(self, key: str) -> dict:
-        return {lang: content.get(key) for lang, content in self.data.items()}
-    
-    def get_with_locale(self, key: str, locale) -> str:
-        if locale not in self.data.keys(): locale = "en-US"
-        msg = self.data[locale][key]
+    def all(self, key: str) -> dict[str, str]:
+        result: dict[str, str] = {}
         
-        if type(msg) == list:
-            return random.choice(msg)
-        else:
-            return msg 
-
-_instance = Localizer()
-get = _instance.get
-gwl = _instance.get_with_locale
+        for locale, content in self.data.items():
+            if key not in content: continue
+            
+            value = content[key]
+            if isinstance(value, str): result[locale] = value
+        
+        return result
+    
+    def get(self, key: str, locale: str | None, **kwargs) -> str:
+        locale = locale or self.DEFAULT_LOCALE
+        
+        if locale not in self.data:
+            locale = self.DEFAULT_LOCALE
+        
+        content = self.data[locale]
+        
+        if key not in content:
+            content = self.data[self.DEFAULT_LOCALE]
+        
+        if key not in content:
+            raise KeyError(f"Localization key not found: {key}")
+        
+        value = content[key]
+        
+        if isinstance(value, list):
+            value = random.choice(value)
+        
+        return value.format(**kwargs)
+    
+    def default(self, key: str, **kwargs) -> str:
+        return self.get(key, self.DEFAULT_LOCALE, **kwargs)

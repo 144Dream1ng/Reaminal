@@ -1,2 +1,4 @@
 # utils/__init__.py
-from .localizer import get, gwl
+from .localizer import Localizer
+
+localizer = Localizer()

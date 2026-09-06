@@ -1,8 +1,9 @@
 # commands/ping.py
+
 import nextcord
 import os
 import psutil
-from utils import *
+from utils import localizer
 from nextcord.ext import commands
 
 
@@ -21,16 +22,16 @@ class StatusCog(commands.Cog):
         return nextcord.Color.from_rgb(r, g, 25)
     
     @nextcord.slash_command(
-        name=get("status_name1")["en-US"],
-        name_localizations=get("status_name1"),
+        name=localizer.default("status_name1"),
+        name_localizations=localizer.all("status_name1"),
     )
     async def status_first(self, interaction: nextcord.Interaction): pass
     
     @status_first.subcommand(
-        name=get("status_name2")["en-US"],
-        description=get("status_desc")["en-US"],
-        name_localizations=get("status_name2"),
-        description_localizations=get("status_desc")
+        name=localizer.default("status_name2"),
+        description=localizer.default("status_desc"),
+        name_localizations=localizer.all("status_name2"),
+        description_localizations=localizer.all("status_desc")
     )
     async def status(self, interaction: nextcord.Interaction):
         if not self.reaminal.user: return
@@ -41,21 +42,22 @@ class StatusCog(commands.Cog):
         memory_usage = process.memory_info().rss / (1024 ** 2)
         
         embed = nextcord.Embed(
-            title=gwl('status_emb_title', locale),
+            title=localizer.get('status_emb_title', locale),
             color=self.status_color(latency)
         )
         embed.add_field(
-            name=gwl('status_emb_lat_title', locale), 
-            value=gwl('status_emb_lat', locale).format(latency=latency), 
+            name=localizer.get('status_emb_lat_title', locale), 
+            value=localizer.get('status_emb_lat', locale, latency=latency), 
             inline=False
         )
         embed.add_field(
-            name=gwl('status_emb_mem_title', locale), 
-            value=gwl('status_emb_mem', locale).format(memory=memory_usage), 
+            name=localizer.get('status_emb_mem_title', locale), 
+            value=localizer.get('status_emb_mem', locale, memory=memory_usage), 
             inline=False
         )
         embed.set_thumbnail(url=self.reaminal.user.display_avatar.url)
         await interaction.response.send_message(embed=embed)
+
 
 def setup(reaminal: commands.Bot):
     reaminal.add_cog(StatusCog(reaminal))
