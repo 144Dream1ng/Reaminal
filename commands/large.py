@@ -15,7 +15,7 @@ class LargeCog(commands.Cog):
         self.EMOJI_PATTERN = re.compile(
             r"<(?P<animated>a?):(?P<name>\w+):(?P<id>\d+)>"
         )
-        self.UPSCALE_SIZE = 512
+        self.UPSCALE_SIZE = 256
         self.RESAMPLE_METHOD = Image.Resampling.BICUBIC
     
     @nextcord.message_command(
