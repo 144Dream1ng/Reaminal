@@ -1,5 +1,4 @@
 # commands/ping.py
-
 import nextcord
 import os
 import psutil
