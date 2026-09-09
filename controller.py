@@ -4,9 +4,6 @@ import subprocess
 from pathlib import Path
 
 
-SERVER_CONTROL = Path(__file__).resolve().parent / "ServerControl"
-
-
 def main() -> None:
     bat_files = sorted(
         (
@@ -62,6 +59,8 @@ def main() -> None:
 if __name__ == "__main__":
     if sys.platform != "win32":
         sys.exit("Windows에서만 실행할 수 있습니다.")
+    
+    SERVER_CONTROL = Path(__file__).resolve().parent / "ServerControl"
     
     import msvcrt
     
