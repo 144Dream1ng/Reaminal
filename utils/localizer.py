@@ -2,6 +2,7 @@
 import json
 import random
 from pathlib import Path
+from functools import cache
 
 
 class Localizer:
@@ -22,7 +23,10 @@ class Localizer:
         for file in self.directory.glob("*.json"):
             with file.open("r", encoding="utf-8") as f:
                 self.data[file.stem] = json.load(f)
+        
+        self.all.cache_clear()
     
+    @cache
     def all(self, key: str) -> dict[str, str]:
         result: dict[str, str] = {}
         
