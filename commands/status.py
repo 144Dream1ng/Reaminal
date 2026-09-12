@@ -21,7 +21,7 @@ class StatusCog(commands.Cog):
         return nextcord.Color.from_rgb(r, g, 25)
     
     @nextcord.slash_command(
-        name=localizer.default("status_name1"),
+        name=localizer.get("status_name1"),
         name_localizations=localizer.all("status_name1"),
         integration_types=[
             nextcord.IntegrationType.guild_install,
@@ -37,8 +37,8 @@ class StatusCog(commands.Cog):
     async def status_first(self, interaction: nextcord.Interaction): pass
     
     @status_first.subcommand(
-        name=localizer.default("status_name2"),
-        description=localizer.default("status_desc"),
+        name=localizer.get("status_name2"),
+        description=localizer.get("status_desc"),
         name_localizations=localizer.all("status_name2"),
         description_localizations=localizer.all("status_desc")
     )

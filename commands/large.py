@@ -49,7 +49,7 @@ class LargeCog(commands.Cog):
         self.RESAMPLE_METHOD = Image.Resampling.BICUBIC
     
     @nextcord.message_command(
-        name=localizer.default("large_name"),
+        name=localizer.get("large_name"),
         name_localizations=localizer.all("large_name"),
         integration_types=[
             nextcord.IntegrationType.guild_install,
