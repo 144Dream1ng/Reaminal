@@ -34,7 +34,7 @@ class StatusCog(commands.Cog):
         ],
         force_global=True,
     )
-    async def status_first(self, interaction: nextcord.Interaction): pass
+    async def status_first(self): pass
     
     @status_first.subcommand(
         name=localizer.get("status_name2"),
