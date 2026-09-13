@@ -34,7 +34,26 @@ def reload() -> None:
     
     for file in DIRECTORY.glob("*.json"):
         with file.open("r", encoding="utf-8") as f:
-            data[file.stem] = json.load(f)
+            content = json.load(f)
+        
+        if not isinstance(content, dict):
+            raise TypeError(f"Localization file must contain an object: {file.name}")
+        
+        for key, value in content.items():
+            if not isinstance(value, (str, list)):
+                raise TypeError(f"Invalid localization value: {file.name}:{key}")
+            
+            if isinstance(value, list):
+                if not value:
+                    raise ValueError(f"Localization list cannot be empty: {file.name}:{key}")
+                
+                if any(not isinstance(item, str) for item in value):
+                    raise TypeError(f"Localization list must contain only strings: {file.name}:{key}")
+        
+        data[file.stem] = content
+    
+    if DEFAULT_LOCALE not in data:
+        raise RuntimeError(f"Default locale not found: {DEFAULT_LOCALE}")
     
     all.cache_clear()
 
