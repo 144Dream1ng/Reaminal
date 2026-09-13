@@ -22,7 +22,7 @@ class StatusCog(commands.Cog):
     
     @nextcord.slash_command(
         name=localizer.get("status_name1"),
-        name_localizations=localizer.all("status_name1"),
+        name_localizations=localizer.get_all("status_name1"),
         integration_types=[
             nextcord.IntegrationType.guild_install,
             nextcord.IntegrationType.user_install,
@@ -39,8 +39,8 @@ class StatusCog(commands.Cog):
     @status_first.subcommand(
         name=localizer.get("status_name2"),
         description=localizer.get("status_desc"),
-        name_localizations=localizer.all("status_name2"),
-        description_localizations=localizer.all("status_desc")
+        name_localizations=localizer.get_all("status_name2"),
+        description_localizations=localizer.get_all("status_desc")
     )
     async def status(self, interaction: nextcord.Interaction):
         if not self.reaminal.user: return
