@@ -55,16 +55,16 @@ def reload() -> None:
     if DEFAULT_LOCALE not in data:
         raise RuntimeError(f"Default locale not found: {DEFAULT_LOCALE}")
     
-    all.cache_clear()
+    get_all.cache_clear()
 
 @cache
-def all(key: str) -> dict[str, str]:
+def get_all(key: str) -> dict[str, str]:
     """
     모든 로케일에 대한 특정 키의 현지화 문자열을 반환합니다.
     
     EX)
         from utils import localizer
-        print(localizer.all("large_name"))
+        print(localizer.get_all("large_name"))
         
         > {'en-US': 'Emoji Enlarger', 'ko': '이모지 확대'}
     """
