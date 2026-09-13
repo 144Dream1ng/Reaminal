@@ -50,7 +50,7 @@ class LargeCog(commands.Cog):
     
     @nextcord.message_command(
         name=localizer.get("large_name"),
-        name_localizations=localizer.all("large_name"),
+        name_localizations=localizer.get_all("large_name"),
         integration_types=[
             nextcord.IntegrationType.guild_install,
             nextcord.IntegrationType.user_install,
